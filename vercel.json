@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/[[...path]].js": {
-      "runtime": "@vercel/node@5"
+      "runtime": "nodejs20.x"
     }
   },
   "rewrites": [
