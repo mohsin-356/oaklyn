@@ -1,0 +1,77 @@
+# ================================
+# 📦 Dependencies
+# ================================
+node_modules/
+
+# ================================
+# 🛠 Build / Distribution
+# ================================
+build/
+dist/
+release/
+out/
+win-unpacked/
+mac-unpacked/
+linux-unpacked/
+*.dmg
+*.AppImage
+
+# ================================
+# ⚡ Executables & Installers
+# ================================
+*.exe
+*.msi
+*.deb
+*.rpm
+*.bat
+
+# ================================
+# 🧾 Logs
+# ================================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ================================
+# 🔐 Environment Variables
+# ================================
+.env
+.env.local
+.env.*.local
+
+# ================================
+# 🧠 OS Files
+# ================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ================================
+# 🧪 Temporary / Cache Files
+# ================================
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.cache/
+.parcel-cache/
+
+# ================================
+# 🔑 Sensitive Data
+# ================================
+license-keys/
+*.pem
+*.key
+
+# ================================
+# ⚛️ Electron Specific
+# ================================
+electron-builder.yml
+*.blockmap
+
+# ================================
+# 📝 Misc
+# ================================
+*.txt
