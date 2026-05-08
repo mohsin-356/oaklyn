@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/oaklyn_db'
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://mohsinsaeed356_db_user:ziSgryPaclTKEkV7@cluster0.btslrgl.mongodb.net/'
 
 let isConnected = false
 let retryCount = 0
