@@ -10,12 +10,26 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 const API_PREFIX = '/api'
 
 // Middleware
+const ALLOWED_ORIGINS = [
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'https://oaklyn-nine.vercel.app',
+  process.env.FRONTEND_URL,
+].filter(Boolean)
+
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+  origin: function (origin, callback) {
+    // Allow requests with no origin (mobile apps, curl, etc.)
+    if (!origin) return callback(null, true)
+    if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true)
+    // Allow any vercel.app subdomain
+    if (origin && origin.includes('.vercel.app')) return callback(null, true)
+    callback(null, true) // Allow all for now
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -1224,7 +1238,7 @@ app.use((req, res, next) => {
   }
 })
 
-// Start server
+// Start server (only when running directly, not as Vercel serverless)
 async function startServer() {
   try {
     // Connect to database
@@ -1244,4 +1258,10 @@ async function startServer() {
   }
 }
 
-startServer()
+// Only start server when run directly (not imported by Vercel)
+const isMainModule = process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])
+if (isMainModule) {
+  startServer()
+}
+
+export default app

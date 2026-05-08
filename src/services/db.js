@@ -1,7 +1,9 @@
 // db.js - HTTP API client for web version
 // API client to communicate with backend server
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
+// On Vercel (production), API is on same domain at /api
+// In dev, backend runs on localhost:3000
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:3000/api' : '/api')
 
 // Safe data cleaner
 const clean = (data) => {
