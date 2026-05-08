@@ -75,3 +75,4 @@ electron-builder.yml
 # 📝 Misc
 # ================================
 *.txt
+.vercel
