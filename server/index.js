@@ -15,6 +15,7 @@ const API_PREFIX = '/api'
 
 // Middleware
 const ALLOWED_ORIGINS = [
+  '*',
   'http://localhost:5173',
   'http://127.0.0.1:5173',
   'https://oaklyn-nine.vercel.app',

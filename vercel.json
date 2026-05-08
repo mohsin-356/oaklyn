@@ -4,10 +4,6 @@
     {
       "src": "api/[[...path]].js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "package.json",
-      "use": "@vercel/vite"
     }
   ],
   "routes": [
