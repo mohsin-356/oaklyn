@@ -34,7 +34,7 @@ export async function seedIfEmpty() {
   try {
     const adminExists = await User.findOne({ username: 'admin' }).lean()
     if (!adminExists) {
-      const hash = await bcrypt.hash('admin123', 10)
+      const hash = await bcrypt.hash('admin', 10)
       await User.create({
         name: 'Admin',
         username: 'admin',
@@ -42,7 +42,7 @@ export async function seedIfEmpty() {
         role: 'Admin',
         isActive: true,
       })
-      console.log('Default admin created (admin / admin123)')
+      console.log('Default admin created (admin / admin)')
     } else {
       console.log('Admin already exists')
     }
